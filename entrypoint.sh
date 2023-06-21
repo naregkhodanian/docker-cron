@@ -2,19 +2,14 @@
 
 env >> /etc/environment
 
-# Set the working directory to the root directory of the Laravel app
-cd /app
-
-# Run Laravel queue worker with database driver
-php artisan --no-interaction queue:work database &
-
-# Run Laravel scheduler
-while [ true ]
-do
-    php artisan --no-interaction schedule:run
-    sleep 60
+# Run the job every 15 minutes using curl
+while true; do
+    echo "Running the job..."
+    curl http://la-propane-app/quickbooks/run-job >/dev/null 2>&1
+    echo "Job completed."
+    sleep 900  # Sleep for 900 seconds (15 minutes)
 done
 
-# execute CMD
+# Execute CMD
 echo "$@"
 exec "$@"
