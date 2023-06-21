@@ -1,14 +1,15 @@
 #!/bin/sh
 
-env >> /etc/environment
+# Set the bearer token from the environment variable
+BEARER_TOKEN="Bearer ${STATIC_API_TOKEN}"
 
 # Run the job every 15 minutes using curl and log the response
 while true; do
     echo "Running the job..."
-    response=$(curl -s http://la-propane-portal/quickbooks/run-job)
+    response=$(curl -s -H "Authorization: ${BEARER_TOKEN}" http://la-propane-portal/api/quickbooks/run-job)
     echo "Job response: $response"
     echo "Job completed."
-    sleep 900  # Sleep for 900 seconds (15 minutes)
+    sleep 60  # Sleep for 60 seconds (1 minute)
 done
 
 # Execute CMD
