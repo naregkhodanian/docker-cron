@@ -8,10 +8,13 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /etc/cron.*/*
 
-# Set the working directory to the root directory of the Laravel app
-WORKDIR /
+# Set the working directory to the Laravel app's root directory
+WORKDIR /app
 
-# Copy the entrypoint script and make it executable
+# Copy the Laravel app code into the container
+COPY . /app
+
+# Make the entrypoint script executable
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 

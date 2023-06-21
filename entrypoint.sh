@@ -3,7 +3,7 @@
 env >> /etc/environment
 
 # Set the working directory to the root directory of the Laravel app
-cd /
+cd /app
 
 # Run Laravel queue worker with database driver
 php artisan --no-interaction queue:work database &
