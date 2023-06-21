@@ -9,7 +9,7 @@ while true; do
     response=$(curl -s -H "Authorization: ${BEARER_TOKEN}" http://la-propane-portal/api/quickbooks/run-job)
     echo "Job response: $response"
     echo "Job completed."
-    sleep 60  # Sleep for 60 seconds (1 minute)
+    sleep 43200  # Sleep for 12 hours
 done
 
 # Execute CMD
