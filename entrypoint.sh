@@ -2,10 +2,11 @@
 
 env >> /etc/environment
 
-# Run the job every 15 minutes using curl
+# Run the job every 15 minutes using curl and log the response
 while true; do
     echo "Running the job..."
-    curl http://la-propane-app/quickbooks/run-job >/dev/null 2>&1
+    response=$(curl -s http://la-propane-app/quickbooks/run-job)
+    echo "Job response: $response"
     echo "Job completed."
     sleep 900  # Sleep for 900 seconds (15 minutes)
 done
