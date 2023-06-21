@@ -2,7 +2,6 @@
 
 # Set the bearer token from the environment variable
 BEARER_TOKEN="Bearer ${STATIC_API_TOKEN}"
-echo $BEARER_TOKEN
 
 # Run the job every 15 minutes using curl and log the response
 while true; do
