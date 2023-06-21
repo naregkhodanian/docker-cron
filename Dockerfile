@@ -1,13 +1,15 @@
 FROM ubuntu:22.04
 
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install -y cron curl php-cli \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install -y cron curl php-cli php-mbstring \
+    # Install any additional PHP or Laravel dependencies if needed
+
     # Remove package lists for smaller image sizes
     && rm -rf /var/lib/apt/lists/* \
     && which cron \
     && rm -rf /etc/cron.*/*
 
-COPY crontab /hello-cron
+# COPY crontab /hello-cron
 COPY entrypoint.sh /entrypoint.sh
 
 RUN crontab hello-cron
