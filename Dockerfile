@@ -12,7 +12,7 @@ RUN apt-get update \
 # COPY crontab /hello-cron
 COPY entrypoint.sh /entrypoint.sh
 
-RUN crontab hello-cron
+# RUN crontab hello-cron
 RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
