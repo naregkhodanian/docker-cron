@@ -6,7 +6,7 @@ BEARER_TOKEN="Bearer ${STATIC_API_TOKEN}"
 # Run the job every 15 minutes using curl and log the response
 while true; do
     echo "Running the job..."
-    response=$(curl -s -H "Authorization: ${BEARER_TOKEN}" http://la-propane-portal/api/quickbooks/run-job)
+    response=$(curl -s -H "Authorization: ${BEARER_TOKEN}" https://app.la-propane.com/api/quickbooks/run-job)
     echo "Job response: $response"
     echo "Job completed."
     sleep 43200  # Sleep for 12 hours
