@@ -1,3 +1,4 @@
 * * * * * cd / && php artisan schedule:run >> /dev/null 2>&1
+* * * * * cd / && php artisan queue:work --stop-when-empty >> /dev/null 2>&1
 
 # An empty line is required at the end of this file for a valid cron file.
