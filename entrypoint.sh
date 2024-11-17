@@ -12,15 +12,4 @@ run_quickbooks_job() {
 }
 
 # Start the QuickBooks job in the background
-run_quickbooks_job &
-
-# Navigate to the Laravel project directory
-cd /var/www/html
-
-# Run the Laravel queue worker in an infinite loop
-while true; do
-    echo "=> Starting Laravel queue worker..."
-    php artisan queue:work --sleep=3 --tries=3 --stop-when-empty || true
-    echo "=> Queue worker stopped. Restarting in 5 seconds..."
-    sleep 5
-done
+run_quickbooks_job 
